@@ -150,7 +150,6 @@ kalloc_large(int n)
 		check= check->next;
 	}
 	kmem.freelist = check;
-	cprintf("%p\n", start);
         if(kmem.use_lock)
                 release(&kmem.lock);
         return (char *)start;

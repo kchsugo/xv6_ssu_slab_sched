@@ -29,5 +29,3 @@ xv6는 한 번에 한 페이지(4096바이트)까지만 할당합니다. 두 가
 | `src/proc.h` | `rt_rr`, `my_rr_rt`, `aging_time` 필드 |
 | `src/kalloc.c` | `kalloc_large()` |
 | `src/[slab 파일명]` | slab 할당자, `kmalloc()` / `kmfree()` |
-
-## 실행 방법

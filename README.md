@@ -19,12 +19,14 @@ xv6는 한 번에 한 페이지(4096바이트)까지만 할당합니다. 두 가
 - 분해 할당 (`kmalloc`): 요청 크기를 slab 크기들의 합으로 나누어 필요한 만큼만 할당
   (예: 7439바이트 = 2048×3 + 1024 + 256 + 15)
 
-## 수정한 파일
+## 구성
 
-| 파일 | 내용 |
-|---|---|
-| `src/proc.c` | `fork_rt()`, RT/RR 스케줄러 |
-| `src/trap.c` | 타이머 인터럽트에서 강등과 복귀 처리 |
-| `src/proc.h` | `rt_rr`, `my_rr_rt`, `aging_time` 필드 |
-| `src/kalloc.c` | `kalloc_large()` |
-| `src/[slab 파일명]` | slab 할당자, `kmalloc()` / `kmfree()` |
+| 폴더 | 파일 | 내용 |
+|---|---|---|
+| `src/scheduler` | `proc.c`, `proc.h`, `trap.c` | `fork_rt()`, RT/RR 스케줄러, 강등과 복귀 |
+| `src/rt_linked_list` | `proc.c` | 실시간 프로세스를 연결 리스트로 관리하는 변형 |
+| `src/large_slab` | `kalloc.c`, `slab.c`, `slabtest.c` | 연속 할당 (`kalloc_large`) |
+| `src/divide_slab` | `slab.c`, `slab.h`, `slabtest.c` | 분해 할당 (`kmalloc`, `kmfree`) |
+| `DOCS` | 발표 자료 4개 | 설계 과정 |
+
+xv6-public에서 수정한 파일만 담았습니다. 빌드하려면 xv6-public 소스에 해당 파일을 덮어씁니다.
